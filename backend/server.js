@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 
 const port = process.env.PORT || 5000;
-app.use(express.json()); // allows us to work with json
+app.use(express.json()); // middleware: allows us to work with json
 
 app.get("/", (req, res) => {
   res.send("Server is running...");
