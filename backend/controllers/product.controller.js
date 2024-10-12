@@ -63,12 +63,14 @@ export const updateProduct = async (req, res) => {
     if (updatedProduct) {
       res.status(200).json({
         isSuccess: true,
-        message: `Product has been updated: ${updatedProduct}`,
+        message: `Product has been updated`,
+        updatedProduct: updatedProduct
       });
     } else {
       res.status(404).json({
         isSuccess: false,
         message: `Product with Id: ${id} not found`,
+        updatedProduct: null
       });
     }
   } catch (error) {
