@@ -12,25 +12,7 @@ const port = process.env.PORT || 5000;
 const __dirname = path.resolve();
 app.use(express.json()); // middleware: allows us to work with JSON
 
-// CORS settings to allow both local and deployed frontend applications to access the backend
-const allowedOrigins = [
-  "https://reactproductstore.onrender.com", // Deployed app
-  "http://localhost:5173"  // Local development
-];
-
-app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (e.g., mobile apps or curl requests)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed methods
-  credentials: true,  // Allow credentials (cookies, etc.) if necessary
-  allowedHeaders: ['Content-Type', 'Authorization']  // Allowed headers
-}));
+app.use(cors());
 
 // Routes for products
 app.use("/api/products", productRoutes);
