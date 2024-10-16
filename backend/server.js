@@ -14,19 +14,17 @@ app.use(express.json()); // middleware: allows us to work with json
 // cors settings to allow frontend application to hit the backend server.
 const allowedOrigins = ["https://reactproductstore.onrender.com"];
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      // Check if the incoming request origin is in the allowedOrigins array
-      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-  })
-);
-app.options("*", cors()); // Allow preflight for all routes
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
+}));
+
 //for all the routes starting with '/api/products' we are sending it to productRoutes
 app.use("/api/products", productRoutes);
 
