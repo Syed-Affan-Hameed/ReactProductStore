@@ -12,7 +12,7 @@ export const useProductStore = create((set) => {
       try {
         const response = await axios({
           method: "post",
-          url: "http://localhost:5000/api/products/add-product",
+          url: "/api/products/add-product",
           headers: { "content-type": "application/json" },
           data: {
             ...newProduct
@@ -34,7 +34,7 @@ export const useProductStore = create((set) => {
       try {
         const response = await axios({
           method: "get",
-          url: "http://localhost:5000/api/products",
+          url: "/api/products",
           responseType: "json",
         });
         if (response.status === 200) {
@@ -59,7 +59,7 @@ export const useProductStore = create((set) => {
       try {
         const response = await axios({
           method: "delete",
-          url: `http://localhost:5000/api/products/delete-product/${productId}`,
+          url: `/api/products/delete-product/${productId}`,
           responseType: "json"
         });
         if (response.status === 200) {
@@ -90,7 +90,7 @@ export const useProductStore = create((set) => {
       try{
         const response = await axios({
           method: "put",
-          url: `http://localhost:5000/api/products/update-product/${productId}`,
+          url: `/api/products/update-product/${productId}`,
           responseType: "json",
           headers: { "content-type": "application/json" },
           data:{
