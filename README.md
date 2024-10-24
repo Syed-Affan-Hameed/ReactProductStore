@@ -1,7 +1,7 @@
 #React Product Store.
 A good project to do, to refresh the react/nodejs fundamental concepts.
 
-[Deployment Link (Render) :- ](https://reactproductstore.onrender.com)
+[Deployment Link (Render)](https://reactproductstore.onrender.com)
 
 ScreenShots:-
 
